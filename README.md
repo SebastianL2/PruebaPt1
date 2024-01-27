@@ -1,6 +1,6 @@
 # punto 1
 
-Breve descripción o resumen del proyecto.
+Prueba backend pt1
 
 ## Instalación
 
