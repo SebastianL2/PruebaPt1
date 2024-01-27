@@ -1,25 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     
-    <title>Punto 1</title>
-</head>
-<body>
-    <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/products">More..</a>
-        </li>
-      </ul>
-      <div id="dataUserList">
-                
-      </div>
+  </head>
+  <body style=" background-color: rgb(36, 34, 34); color: white;">
     
-</body>
+  <div class="container p-4">
+        <h1>Lista de Usuarios</h1>
+        <div class="mb-3">
+          <label for="formGroupExampleInput" class="form-label">Busqueda</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+          
+        </div>
+    
+        <button type="button" onclick="renderResult()" class="btn btn-primary">Buscar</button>
+       
+        <div id="productsList">
+                
+        </div>
+ 
+        
+    </div>
+    <script src="scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
 </html>

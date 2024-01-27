@@ -1,22 +1,32 @@
 
-const API_URL ='https://api.github.com/users/'
+const API_URL ='https://api.github.com/users'
 let dataUser=[];
 let listHTML="";
 
-
-
-const getData= (USERNAME)=>{
-fetch(`${API_URL}/api/data/${USERNAME}/repos?per_page=10&sort=stars`)
-.then(response => response.json())
-.catch(error => {
-    alertManager('error', ' Ups! Ocurrió un problema al cargar los datos');
-  })
-.then(data=>{
-    dataUser = data.data;
-   console.log(data.data)
-    renderResult(data.data);
-    
-})
+function alertManager(type, message) {
+  // Aquí puedes implementar la lógica para mostrar alertas
+  alert(`${type.toUpperCase()}: ${message}`);
 }
-getData();
 
+const getData =async (USERNAME) => {
+  try {
+    console.log("hola", USERNAME);
+    const response = await fetch(`https://api.github.com/search/repositories?q=user:${USERNAME}+stars:>=1000&sort=stars&order=desc`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    console.log("Datos completos:", data);
+   
+  } catch (error) {
+    console.error('Error al obtener los repositorios:', error);
+  }
+};
+
+
+
+const dataUserList= document.querySelector('#dataUserList')
+const renderResult = ()=>{
+  getData("google");
+
+}
