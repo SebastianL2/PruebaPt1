@@ -11,7 +11,7 @@ function alertManager(type, message) {
 const getData =async (USERNAME) => {
   try {
     console.log("hola", USERNAME);
-    const response = await fetch(`https://api.github.com/search/repositories?q=user:${USERNAME}+stars:>=1000&sort=stars&order=desc`);
+    const response = await fetch(`https://api.github.com/search/repositories?q=user:${USERNAME}+stars:>=1&sort=stars&order=desc`);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
@@ -29,29 +29,48 @@ const renderTable = () => {
   const tableBody = document.getElementById("table-body");
   let tableHTML = "";
   let num = 0;
+
+  // spinner de carga
+  tableBody.innerHTML = `
+    <tr>
+      <td colspan="9" style="text-align: center;">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </td>
+    </tr>
+  `;
+
+  setTimeout(() => {
+
+    dataUser.items.slice(0, 10).forEach(repo => {
+      num++;
+      tableHTML += `
+        <tr>
+          <td>${num}</td>
+          <td>${repo.id}</td>
+          <td>${repo.name}</td>
+          <td>${repo.description}</td>
+          <td>${repo.stargazers_count}</td>
+          <td>${repo.clone_url}</td>
+          <td>${repo.private}</td>
+          <td>${repo.forks_count}</td> 
+          <td>${repo.watchers_count}</td> 
+        </tr>
+      `;
+    });
+
  
-  dataUser.items.slice(0, 10).forEach(repo => {
-       num++;
-    tableHTML += `
-      <tr>
-        <td>${num}</td>
-        <td>${repo.id}</td>
-        <td>${repo.name}</td>
-        <td>${repo.description}</td>
-        <td>${repo.stargazers_count}</td>
-        <td>${repo.clone_url}</td>
-        <td>${repo.private}</td>
-        <td>${repo.forks_count}</td> 
-        <td>${repo.watchers_count}</td> 
-      </tr>
-    `;
-  });
-  
-  tableBody.innerHTML = tableHTML;
+    tableBody.innerHTML = tableHTML;
+  }, 2000); 
 };
 
-getData("google").then(() => {
-  renderTable();
-});
+function getDataAndRenderTable() {
+  const inputValue = document.getElementById('searchInput').value;
+  getData(inputValue || "google")
+    .then(() => {
+      renderTable();
+    });
+}
 
 
