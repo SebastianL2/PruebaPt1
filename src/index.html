@@ -13,16 +13,26 @@
         <h1>Lista de Usuarios</h1>
         <div class="mb-3">
           <label for="formGroupExampleInput" class="form-label">Busqueda</label>
-          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="google">
           
         </div>
     
         <button type="button" onclick="renderResult()" class="btn btn-primary">Buscar</button>
        
-        <div id="productsList">
-                
-        </div>
- 
+      
+        <table class="table" >
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+           
+          </tbody>
+        </table>
         
     </div>
     <script src="scripts.js"></script>

@@ -17,7 +17,7 @@ const getData =async (USERNAME) => {
     }
     const data = await response.json();
     console.log("Datos completos:", data);
-   
+    dataUser=data;
   } catch (error) {
     console.error('Error al obtener los repositorios:', error);
   }
@@ -25,8 +25,27 @@ const getData =async (USERNAME) => {
 
 
 
-const dataUserList= document.querySelector('#dataUserList')
-const renderResult = ()=>{
-  getData("google");
+const renderTable = () => {
+  const tableBody = document.getElementById("table-body");
+  let tableHTML = "";
+ 
+  dataUser.items.slice(0, 10).forEach(repo => {
+  
+    tableHTML += `
+      <tr>
+        <td>${repo.name}</td>
+        <td>${repo.stargazers_count}</td>
+        <td>${repo.language}</td>
+        <td>${repo.description}</td>
+      </tr>
+    `;
+  });
+  
+  tableBody.innerHTML = tableHTML;
+};
 
-}
+getData("google").then(() => {
+  renderTable();
+});
+
+
