@@ -28,15 +28,21 @@ const getData =async (USERNAME) => {
 const renderTable = () => {
   const tableBody = document.getElementById("table-body");
   let tableHTML = "";
+  let num = 0;
  
   dataUser.items.slice(0, 10).forEach(repo => {
-  
+       num++;
     tableHTML += `
       <tr>
+        <td>${num}</td>
+        <td>${repo.id}</td>
         <td>${repo.name}</td>
-        <td>${repo.stargazers_count}</td>
-        <td>${repo.language}</td>
         <td>${repo.description}</td>
+        <td>${repo.stargazers_count}</td>
+        <td>${repo.clone_url}</td>
+        <td>${repo.private}</td>
+        <td>${repo.forks_count}</td> 
+        <td>${repo.watchers_count}</td> 
       </tr>
     `;
   });
