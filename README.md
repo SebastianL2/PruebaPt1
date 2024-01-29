@@ -9,9 +9,9 @@ http://localhost:3000/
 ```
 Clona el repositorio desde GitHub y ejecuta el siguiente comando para instalar las dependencias:
 
-git clone:
+
 ```bash
- https://github.com/tu_usuario/tu_proyecto.git
+ git clone https://github.com/tu_usuario/tu_proyecto.git
 ```
 Ejecucion dev con nodemon o normal (start):
 ```bash
